@@ -1,12 +1,16 @@
-from flask_wtf import FlaskForm # importación de la clase base FlaskForm
+# importación de la clase base FlaskForm
+from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired # el validador permite revisar que el campo no se envía vacío
+# el validador DataRequired permite revisar que el campo no se envía vacío
+from wtforms.validators import DataRequired 
 
 # formulario de inicio de sesion
 
-class FormularioLogin(FlaskForm): # por cada campo, se crea un objeto de esta clase
-
-    usuario     = StringField('Usuario', validators=[DataRequired()])
-    password    = PasswordField('Contraseña',  validators=[DataRequired()])
+class FormularioLogin(FlaskForm):
+    """
+    Clase para crear objetos de Formulario de inicio de sesion
+    """
+    usuario = StringField('Usuario', validators=[DataRequired()])
+    password = PasswordField('Contraseña',  validators=[DataRequired()])
     remember_me = BooleanField('Olvidaste tu contraseña?')
-    submit      = SubmitField('Iniciar sesión')
+    submit = SubmitField('Iniciar sesión')

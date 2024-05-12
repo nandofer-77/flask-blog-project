@@ -1,4 +1,4 @@
-{% extends "base.html"%} <!-- declaración para importar plantillas con extends -->
+{% extends "base.html"%} <!-- declaración para importar plantilla html usando extends -->
 
 {% block contenido %}
 
@@ -7,11 +7,20 @@
     {{ form.hidden_tag() }}
     <p>
         {{ form.usuario.label }}<br>
-        {{ form.usuario(size=32) }}
+        {{ form.usuario(size=32) }}<br>
+        {% for error in form.usuario.errors %}
+        <!-- los errores de validación se agregan en formato de lista 
+            a form.<nombre de campo>.errors -->
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
     </p>
     <p>
         {{ form.password.label }}<br>
-        {{ form.password(size=32) }}
+        {{ form.password(size=32) }}<br>
+        {% for error in form.password.errors %}
+        <!-- errores de validación en la plantilla -->
+        <span style="color: red;">[{{ error }}] </span>
+        {% endfor %}
     </p>
     <p>
         {{ form.remember_me() }} {{ form.remember_me.label }}

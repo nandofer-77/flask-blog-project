@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- en esta version de la pagina, aun no se tiene un inicio de sesión
+por lo que se muestra un mensaje que confirma la recepción de credenciales -->
 <html>
     <head>
         {% if title %}
@@ -13,10 +15,22 @@
     <body>
         <div>
             Microblog:
-            <a href="/index">Inicio</a>
-            <a href="/login">Iniciar sesión</a>
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('login') }}">Iniciar sesión</a>
+            <!-- uso de la función url_for() para generar las URL de la aplicación -->
         </div>
         <hr>
+        {% with mensajes = get_flashed_messages() %}
+        <!-- uso del constructor with para asignar el resultado de get_flashed_messages()
+            a una variable -->
+        {% if mensajes %}
+        <ul>
+            {% for mensaje in mensajes %}
+            <li>{{ mensaje }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block contenido %}{% endblock %}
     </body>
 
