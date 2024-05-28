@@ -1,7 +1,6 @@
 import os
 directorio_base = os.path.abspath(os.path.dirname(__file__))
 
-
 class Config:
     # Configuracion de clave secreta
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'clave-generica'
